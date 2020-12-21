@@ -19,7 +19,19 @@ services:
     container_name: node_exporter    
     ports:
       - 9100:9100      
-    restart: "no"    
+    restart: "no" 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    environment: 
+      - discovery.type=single-node
+    container_name: elasticsearch    
+    ports:
+      - 9200:9200
+    restart: "no"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.10.1
+    ports:
+      - 5601:5601        
 
 networks:  
   default:
